@@ -1,7 +1,7 @@
 package com.example.demo;
 
 //to get requested input and store it
-public class Request {
+public class CalculatorRequest {
     private double num1;
     private double num2;
     private String operation;
