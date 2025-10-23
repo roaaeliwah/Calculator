@@ -25,6 +25,8 @@ public class CalculatorService {
         return num1 * num1;
     }
     public double sqrt(double num1){
+        if(num1 < 0)
+            throw new ArithmeticException("Negative square root");
         return Math.sqrt(num1);
     }
     public double reciprocal(double num1){
