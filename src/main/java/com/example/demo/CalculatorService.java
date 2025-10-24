@@ -11,12 +11,12 @@ public class CalculatorService {
                 return num1 + num2;
             case "-":
                 return num1 - num2;
-            case "*":
+            case "x":
                 return num1 * num2;
-            case "/":
+            case "÷":
                 if(num2 == 0)
                     throw new ArithmeticException("Division by zero");
-                return num1 / num2;
+                return (double) num1 / num2;
             default:
                 throw new IllegalArgumentException("Invalid operation");
         }

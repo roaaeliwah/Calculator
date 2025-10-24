@@ -1,8 +1,11 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 //entry point of web app
 @RestController
@@ -19,8 +22,8 @@ public class CalculatorController {
             switch(request.getOperation()) {
                 case "+":
                 case "-":
-                case "*":
-                case "/":
+                case "x":
+                case "÷":
                     result = calculatorService.eval(request.getNum1(), request.getNum2(), request.getOperation());
                     break;
                 case "square":
@@ -38,7 +41,10 @@ public class CalculatorController {
                 default:
                     throw new IllegalArgumentException("Invalid operation");
             }
-            return String.valueOf(result);
+            //converts the exact binary value of result into a decimal to avoid really small errors
+            BigDecimal formatted = new BigDecimal(result).setScale(10, RoundingMode.HALF_UP);
+            // returns string with no unnecessary trailing zeros
+            return formatted.stripTrailingZeros().toPlainString();
         }
         catch (ArithmeticException | IllegalArgumentException e) {
             return "E";
