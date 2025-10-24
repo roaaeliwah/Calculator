@@ -38,6 +38,9 @@ public class CalculatorController {
                 case "negate":
                     result = calculatorService.negate(request.getNum1());
                     break;
+                case "%":
+                    result = calculatorService.percent(request.getNum1());
+                    break;
                 default:
                     throw new IllegalArgumentException("Invalid operation");
             }

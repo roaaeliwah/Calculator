@@ -37,6 +37,9 @@ public class CalculatorService {
     public double negate(double num1){
         return -num1;
     }
+    public double percent(double num1){
+        return num1 / 100;
+    }
 
 }
 
